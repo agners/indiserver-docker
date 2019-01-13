@@ -18,7 +18,7 @@ RUN apt-get update && apt-get --no-install-recommends install -y \
 
 RUN pip3 install indiweb
 
-RUN useradd -ms /bin/bash indi
+RUN useradd -ms /bin/bash -G dialout indi
 
 RUN mkdir -p /indicfg && chown -R indi:indi /indicfg
 
