@@ -8,6 +8,7 @@ COPY mutlaqja-ubuntu-ppa-bionic.list /etc/apt/sources.list.d/
 RUN apt-get update && apt-get --no-install-recommends install -y \
      libindi1 \
      indi-bin \
+     dumb-init \
   && rm -rf /var/lib/apt/lists/*
 
 # Install pip3 and indiweb dependencies
@@ -25,5 +26,5 @@ RUN mkdir -p /indicfg && chown -R indi:indi /indicfg
 USER indi
 WORKDIR /home/indi
 
-ENTRYPOINT [ "indi-web" ]
-CMD [ "-v", "--conf", "/indicfg" ]
+ENTRYPOINT [ "dumb-init", "--" ]
+CMD [ "indi-web", "-v", "--conf", "/indicfg" ]
