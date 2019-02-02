@@ -20,7 +20,9 @@ RUN apt-get update && apt-get --no-install-recommends install -y \
      python3-psutil python3-bottle python3-requests \
   && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install indiweb
+COPY indiweb-0.1.6-py3-none-any.whl /tmp/
+
+RUN pip3 install /tmp/indiweb-0.1.6-py3-none-any.whl
 
 RUN useradd -ms /bin/bash -G dialout indi
 
