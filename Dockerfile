@@ -9,7 +9,10 @@ RUN apt-get update && apt-get --no-install-recommends install -y \
      libindi1 \
      indi-bin \
      dumb-init \
+     ser2net \
   && rm -rf /var/lib/apt/lists/*
+
+COPY ser2net.conf /etc/
 
 # Install pip3 and indiweb dependencies
 RUN apt-get update && apt-get --no-install-recommends install -y \
