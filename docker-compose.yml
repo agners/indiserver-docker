@@ -1,0 +1,17 @@
+version: '3.2'
+services:
+  indi:
+    image: agners/ubuntu-indi:latest
+    restart: always
+    ports:
+     - "4030:4030"
+     - "7624:7624"
+     - "8624:8624"
+    volumes:
+      - type: volume
+        source: indicfg
+        target: /indicfg
+    devices:
+      - "/dev/ttymxc4:/dev/ttymxc4"
+volumes:
+  indicfg:
